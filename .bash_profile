@@ -5,7 +5,7 @@
 #	---------------------------------------
 
 # Thanks to jonnyscholes! https://github.com/jonnyscholes/.dot-files/
-# Responsive git prompt from jondavidjohn https://github.com/jondavidjohn/dotfiles
+# Responsive git prompt from jondavidjohn https://github.com/jondavidjohn/dotfiles, http://jondavidjohn.com/quest-for-the-perfect-git-bash-prompt-redux/
 
 # See also:
 # http://natelandau.com/my-mac-osx-bash_profile/
