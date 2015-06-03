@@ -31,8 +31,8 @@ function color() {
 	echo "\[$( tput setaf $1 )\]"
 }
 
-black=$(color 0)
-red=$(color 1)
+black=$(tput setaf 0)
+red=$(tput setaf 1)
 green=$(tput setaf 2)
 yellow=$(tput setaf 3)
 blue=$(tput setaf 4)
@@ -48,7 +48,7 @@ yellow_bright=$(tput setaf 11)
 blue_bright=$(tput setaf 12)
 magenta_bright=$(tput setaf 13)
 cyan_bright=$(tput setaf 14)
-white_bright=$(tput setaf 15) 
+white_bright=$(tput setaf 15)
 
 reset=$(tput sgr0)
 COLOREND="\[\e[00m\]"
@@ -67,6 +67,17 @@ cyan_bg=$(tput setab 6)
 
 source $(brew --prefix)/etc/bash_completion.d/git-prompt.sh
 GIT_PS1_SHOWDIRTYSTATE=1
+
+#	---------------------------------------
+#	2.	 ALIASES
+#	---------------------------------------
+
+alias g?='git status '
+alias ga='git add '
+alias gundo='git checkout '
+alias grm='git reset HEAD '
+alias gpull='git pull'
+alias gdiff='git diff '
 
 
 #	---------------------------------------
@@ -103,7 +114,7 @@ parse_git_branch() {
 	  echo "${black_bright}on branch ${red}$branch${COLOREND} "
 	fi
   fi
-  
+
 }
 
 
@@ -111,17 +122,18 @@ parse_git_branch() {
 #	------------------------------------------------------------
 
 prompt() {
-	
+
+	time='\[$black_bright\][\A]\[$reset\]'
 	user='\[$magenta\]\u\[$black_bright\] at \[$white\]\h'
 	dir='\[$black_bright\]in \[$cyan\]\W\[$reset\]'
-	
+
 	if [[ $? -eq 0 ]]; then
 		exit_status="${BLUE}$ ${COLOREND}"
 	else
 		exit_status="${RED}$ ${COLOREND}"
 	fi
-	
-	PS1="\n${user} ${dir} $(parse_git_branch)\n$exit_status"
+
+	PS1="\n${time} ${user} ${dir} $(parse_git_branch)\n$exit_status"
 }
 
 
