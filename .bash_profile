@@ -5,12 +5,20 @@
 #	---------------------------------------
 
 # Thanks to jonnyscholes! https://github.com/jonnyscholes/.dot-files/
-# Responsive git prompt from jondavidjohn https://github.com/jondavidjohn/dotfiles, http://jondavidjohn.com/quest-for-the-perfect-git-bash-prompt-redux/
+# Responsive git prompt from jondavidjohn https://github.com/jondavidjohn/dotfiles
 
-# See also:
-# http://natelandau.com/my-mac-osx-bash_profile/
-# http://natelandau.com/bash-scripting-utilities/
-# Git bash completion https://conra.dk/2013/01/18/git-on-osx.html
+# Usage
+# ----
+# Run the following install commands (requires brew):
+#     brew install bash-completion 
+#     brew install git
+
+# See also
+# ----
+# 	http://jondavidjohn.com/quest-for-the-perfect-git-bash-prompt-redux/
+#	http://natelandau.com/my-mac-osx-bash_profile/
+# 	http://natelandau.com/bash-scripting-utilities/
+# 	Git bash completion: https://conra.dk/2013/01/18/git-on-osx.html
 
 
 #	---------------------------------------
