@@ -68,6 +68,7 @@ cyan_bg=$(tput setab 6)
 source $(brew --prefix)/etc/bash_completion.d/git-prompt.sh
 GIT_PS1_SHOWDIRTYSTATE=1
 
+
 #	---------------------------------------
 #	2.	 ALIASES
 #	---------------------------------------
@@ -80,6 +81,7 @@ alias grm='git reset HEAD '
 alias gpull='git pull'
 alias gdiff='git diff '
 
+alias ip="ifconfig | grep 'broadcast' | cut -d ' ' -f 2"
 
 #	---------------------------------------
 #	10. git
