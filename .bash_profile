@@ -73,6 +73,7 @@ GIT_PS1_SHOWDIRTYSTATE=1
 #	---------------------------------------
 
 alias g?='git status '
+alias gb?='git branch '
 alias ga='git add '
 alias gundo='git checkout '
 alias grm='git reset HEAD '
