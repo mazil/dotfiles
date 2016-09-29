@@ -1,0 +1,7 @@
+[push]
+	default = simple
+[user]
+	email = maziltov@gmail.com
+	name = Masni Bennett
+[core]
+	editor = nano
