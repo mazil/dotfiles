@@ -120,7 +120,7 @@ parse_git_branch() {
   fi
 
   if [[ $branch != "" ]]; then
-	if [[ $(git status 2> /dev/null | tail -n1) == "nothing to commit, working directory clean" ]]; then
+	if [[ $(git status 2> /dev/null | tail -n1) == "nothing to commit, working tree clean" ]]; then
 	  echo "${black_bright}on branch ${green}$branch${COLOREND} "
 	else
 	  echo "${black_bright}on branch ${red}$branch${COLOREND} "
