@@ -5,24 +5,16 @@
 #	---------------------------------------
 
 # Thanks to jonnyscholes! https://github.com/jonnyscholes/.dot-files/
-# Responsive git prompt from jondavidjohn https://github.com/jondavidjohn/dotfiles
+# Responsive git prompt from jondavidjohn https://github.com/jondavidjohn/dotfiles, http://jondavidjohn.com/quest-for-the-perfect-git-bash-prompt-redux/
 
-# Usage
-# ----
-# Run the following install commands (requires brew):
-#     brew install bash-completion 
-#     brew install git
-
-# See also
-# ----
-# 	http://jondavidjohn.com/quest-for-the-perfect-git-bash-prompt-redux/
-#	http://natelandau.com/my-mac-osx-bash_profile/
-# 	http://natelandau.com/bash-scripting-utilities/
-# 	Git bash completion: https://conra.dk/2013/01/18/git-on-osx.html
+# See also:
+# http://natelandau.com/my-mac-osx-bash_profile/
+# http://natelandau.com/bash-scripting-utilities/
+# Git bash completion https://conra.dk/2013/01/18/git-on-osx.html
 
 
 #	---------------------------------------
-#	Old (to merge)
+#	Old (to fix/merge)
 #	---------------------------------------
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
@@ -81,15 +73,24 @@ GIT_PS1_SHOWDIRTYSTATE=1
 #	2.	 ALIASES
 #	---------------------------------------
 
+# Git
+
 alias g?='git status '
 alias gb?='git branch '
 alias ga='git add '
 alias gundo='git checkout '
 alias grm='git reset HEAD '
-alias gpull='git pull'
+alias gpull='git pull '
 alias gdiff='git diff '
 
+# Network
+
 alias ip="ifconfig | grep 'broadcast' | cut -d ' ' -f 2"
+
+# Vagrant
+
+alias vrun='vagrant do runserver '
+alias vass='vagrant do assets '
 
 #	---------------------------------------
 #	10. git
@@ -129,7 +130,7 @@ parse_git_branch() {
 }
 
 
-#	Change Prompt
+#	Custom prompt
 #	------------------------------------------------------------
 
 prompt() {
