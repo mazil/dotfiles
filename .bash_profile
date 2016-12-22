@@ -68,6 +68,10 @@ cyan_bg=$(tput setab 6)
 source $(brew --prefix)/etc/bash_completion.d/git-prompt.sh
 GIT_PS1_SHOWDIRTYSTATE=1
 
+if [ -f /usr/local/share/chruby/ ]; then
+	source /usr/local/share/chruby/chruby.sh
+	source /usr/local/share/chruby/auto.sh
+fi
 
 #	---------------------------------------
 #	2.	 ALIASES
