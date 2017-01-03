@@ -68,10 +68,15 @@ cyan_bg=$(tput setab 6)
 source $(brew --prefix)/etc/bash_completion.d/git-prompt.sh
 GIT_PS1_SHOWDIRTYSTATE=1
 
-if [ -f /usr/local/share/chruby/ ]; then
+if [ -f /usr/local/share/chruby/chruby.sh ]; then
 	source /usr/local/share/chruby/chruby.sh
 	source /usr/local/share/chruby/auto.sh
 fi
+
+# To fix ssh-agent regression in Sierra
+# https://github.com/lionheart/openradar-mirror/issues/15361
+
+{ eval `ssh-agent`; ssh-add -A; } &>/dev/null
 
 #	---------------------------------------
 #	2.	 ALIASES
