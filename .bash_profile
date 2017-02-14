@@ -12,7 +12,6 @@
 # http://natelandau.com/bash-scripting-utilities/
 
 # Git bash completion: https://conra.dk/2013/01/18/git-on-osx.html
-# Mac OS X ssh-agent issue: https://github.com/lionheart/openradar-mirror/issues/15361#issuecomment-270242512
 
 #	---------------------------------------
 #	Old (to fix/merge)
