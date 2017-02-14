@@ -4,20 +4,23 @@
 #  References
 #	---------------------------------------
 
-# Thanks to jonnyscholes! https://github.com/jonnyscholes/.dot-files/
+# Thanks to jonnyscholes for help and tips! https://github.com/jonnyscholes/.dot-files/
 # Responsive git prompt from jondavidjohn https://github.com/jondavidjohn/dotfiles, http://jondavidjohn.com/quest-for-the-perfect-git-bash-prompt-redux/
 
 # See also:
 # http://natelandau.com/my-mac-osx-bash_profile/
 # http://natelandau.com/bash-scripting-utilities/
-# Git bash completion https://conra.dk/2013/01/18/git-on-osx.html
 
+# Git bash completion: https://conra.dk/2013/01/18/git-on-osx.html
+# Mac OS X ssh-agent issue: https://github.com/lionheart/openradar-mirror/issues/15361#issuecomment-270242512
 
 #	---------------------------------------
 #	Old (to fix/merge)
 #	---------------------------------------
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+# Add `bins` to the `$PATH`
 export PATH=/usr/local/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
 
@@ -64,18 +67,16 @@ cyan_bg=$(tput setab 6)
 #	1.	 ENVIRONMENT CONFIGURATION
 #	---------------------------------------
 
-source $(brew --prefix)/etc/bash_completion.d/git-prompt.sh
-GIT_PS1_SHOWDIRTYSTATE=1
+# Add tab completion for bash commands
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+	source $(brew --prefix)/etc/bash_completion
+fi
 
+# Add (optional) ruby config
 if [ -f /usr/local/share/chruby/chruby.sh ]; then
 	source /usr/local/share/chruby/chruby.sh
 	source /usr/local/share/chruby/auto.sh
 fi
-
-# To fix ssh-agent regression in Sierra
-# https://github.com/lionheart/openradar-mirror/issues/15361
-
-{ eval `ssh-agent`; ssh-add -A; } &>/dev/null
 
 #	---------------------------------------
 #	2.	 ALIASES
@@ -105,35 +106,33 @@ alias vass='vagrant do assets '
 #	10. git
 #	---------------------------------------
 
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-	source $(brew --prefix)/etc/bash_completion
-fi
-
-# Responsive Prompt
+# Responsive colour-coded git things to bash prompt
 
 parse_git_branch() {
   if [ -f $(brew --prefix)/etc/bash_completion ]; then
-	branch=`__git_ps1 "%s"`
+    source $(brew --prefix)/etc/bash_completion.d/git-prompt.sh
+    GIT_PS1_SHOWDIRTYSTATE=1
+  	branch=`__git_ps1 "%s"`
   else
-	ref=$(git-symbolic-ref HEAD 2> /dev/null) || return
-	branch="${ref#refs/heads/}"
+  	ref=$(git-symbolic-ref HEAD 2> /dev/null) || return
+  	branch="${ref#refs/heads/}"
   fi
 
   if [[ `tput cols` -lt 110 ]]; then
-	branch=`echo $branch | sed s/feature/f/1`
-	branch=`echo $branch | sed s/hotfix/h/1`
-	branch=`echo $branch | sed s/release/\r/1`
+  	branch=`echo $branch | sed s/feature/f/1`
+  	branch=`echo $branch | sed s/hotfix/h/1`
+  	branch=`echo $branch | sed s/release/\r/1`
 
-	branch=`echo $branch | sed s/master/mstr/1`
-	branch=`echo $branch | sed s/develop/dev/1`
+  	branch=`echo $branch | sed s/master/mstr/1`
+  	branch=`echo $branch | sed s/develop/dev/1`
   fi
 
   if [[ $branch != "" ]]; then
-	if [[ $(git status 2> /dev/null | tail -n1) == "nothing to commit, working tree clean" ]]; then
-	  echo "${black_bright}on branch ${green}$branch${COLOREND} "
-	else
-	  echo "${black_bright}on branch ${red}$branch${COLOREND} "
-	fi
+  	if [[ $(git status 2> /dev/null | tail -n1) == "nothing to commit, working tree clean" ]]; then
+  	  echo "${black_bright}on branch ${green}$branch${COLOREND} "
+  	else
+  	  echo "${black_bright}on branch ${red}$branch${COLOREND} "
+  	fi
   fi
 
 }
