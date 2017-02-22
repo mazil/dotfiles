@@ -101,6 +101,10 @@ alias ip="ifconfig | grep 'broadcast' | cut -d ' ' -f 2"
 alias vrun='vagrant do runserver '
 alias vass='vagrant do assets '
 
+# Postgres
+alias pg_start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+alias pg_stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
+
 #	---------------------------------------
 #	10. git
 #	---------------------------------------
