@@ -7,6 +7,13 @@
 # Thanks to jonnyscholes for help and tips! https://github.com/jonnyscholes/.dot-files/
 # Responsive git prompt from jondavidjohn https://github.com/jondavidjohn/dotfiles, http://jondavidjohn.com/quest-for-the-perfect-git-bash-prompt-redux/
 
+
+# Installation:
+# git config --global color.ui true
+# brew install bash-completion
+# source /usr/local/git/contrib/completion/git-prompt.sh
+
+
 # See also:
 # http://natelandau.com/my-mac-osx-bash_profile/
 # http://natelandau.com/bash-scripting-utilities/
@@ -113,7 +120,7 @@ alias pg_stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 
 parse_git_branch() {
   if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    source $(brew --prefix)/etc/bash_completion.d/git-prompt.sh
+    source $(brew --prefix)/git/contrib/completion/git-prompt.sh
     GIT_PS1_SHOWDIRTYSTATE=1
   	branch=`__git_ps1 "%s"`
   else
