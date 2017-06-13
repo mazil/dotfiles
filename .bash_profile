@@ -154,7 +154,8 @@ parse_git_branch() {
 prompt() {
 
 	time='\[$black_bright\][\A]\[$reset\]'
-	user='\[$magenta\]\u\[$black_bright\] at \[$white\]\h'
+	user='\[$magenta\]\u\[$black_bright\]'
+        host='at \[$white\]\h'
 	dir='\[$black_bright\]in \[$cyan\]\W\[$reset\]'
 
 	if [[ $? -eq 0 ]]; then
@@ -163,7 +164,7 @@ prompt() {
 		exit_status="${RED}$ ${COLOREND}"
 	fi
 
-	PS1="\n${time} ${user} ${dir} $(parse_git_branch)\n$exit_status"
+	PS1="\n${time} ${user} ${host} ${dir} $(parse_git_branch)\n$exit_status"
 }
 
 
