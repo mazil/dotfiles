@@ -29,6 +29,7 @@
 # Add `bins` to the `$PATH`
 export PATH=/usr/local/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
+export PATH="/usr/local/opt/postgresql@9.4/bin:$PATH"
 
 
 #	---------------------------------------
