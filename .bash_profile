@@ -120,7 +120,7 @@ alias pg_stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 
 parse_git_branch() {
   if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    source $(brew --prefix)/git/contrib/completion/git-prompt.sh
+    source $(brew --prefix)/etc/bash_completion.d/git-prompt.sh
     GIT_PS1_SHOWDIRTYSTATE=1
   	branch=`__git_ps1 "%s"`
   else
