@@ -74,9 +74,13 @@ cyan_bg=$(tput setab 6)
 #	1.	 ENVIRONMENT CONFIGURATION
 #	---------------------------------------
 
+bash_completion_loaded=false
+
 # Add tab completion for bash commands
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
+	bash_completion_loaded=true  # not really loaded, but found and run
 	source $(brew --prefix)/etc/bash_completion
+	source $(brew --prefix)/etc/bash_completion.d/git-prompt.sh
 fi
 
 # Add (optional) ruby config
@@ -120,8 +124,7 @@ alias pg_stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 # Responsive colour-coded git things to bash prompt
 
 parse_git_branch() {
-  if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    source $(brew --prefix)/etc/bash_completion.d/git-prompt.sh
+  if [[ bash_completion_loaded ]]; then
     GIT_PS1_SHOWDIRTYSTATE=1
   	branch=`__git_ps1 "%s"`
   else
